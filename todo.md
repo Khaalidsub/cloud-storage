@@ -1,0 +1,7 @@
+- complete nestjs endpoint
+- container
+- nginx
+- share static folder
+- domain name
+- deploy
+- https
