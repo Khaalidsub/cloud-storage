@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+    nginx:
+        container_name: filex
+        build:
+            context: ./nginx
+            dockerfile: Dockerfile
+        depends_on:
+            - api
+        ports:
+            - 80:80
+        volumes:
+            - ~/../assets:/usr/share/nginx/assets/
+    api:
+        container_name: api
+        build: 
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - ~/../assets:/usr/assets
+        env_file: 
+            ./.env

@@ -1,4 +1,4 @@
-import { Controller, Logger, Post,Req, UploadedFile, UseInterceptors } from "@nestjs/common";
+import { Controller, Logger, Post, UploadedFile, UseInterceptors } from "@nestjs/common";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { getStorage } from "src/utils";
 @Controller('files')
@@ -9,13 +9,13 @@ export class FileController{
     @UseInterceptors(FileInterceptor('file',{preservePath:true,storage:getStorage('images/khidmaty')}))
     uploadImageKhidmaty(@UploadedFile() file:Express.Multer.File){
         this.logger.log('File has been uploaded....')
-        console.log(file);
+        return file.filename
     }
-    @Post('image/khidmaty')
+    @Post('image/ospc')
     @UseInterceptors(FileInterceptor('file',{preservePath:true,storage:getStorage('images/ospc')}))
     uploadImageOSPC(@UploadedFile() file:Express.Multer.File){
         this.logger.log('File has been uploaded....')
-        console.log(file);
+        return file.filename
     }
 
 }
