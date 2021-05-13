@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { FileModule } from './file/file.module';
 
 
 @Module({
@@ -8,7 +9,7 @@ import { join } from 'path';
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'media'),
     }),
-
+    FileModule
   ],
 
 })
