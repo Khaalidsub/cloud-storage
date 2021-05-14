@@ -20,7 +20,7 @@ jobs:
             cd ./cloud-storage
             git pull
             docker-compose up -d --build
-            docker system prune -a
+            docker system prune -a -y
             echo "Deployment successful to digital ocean"
 
           
