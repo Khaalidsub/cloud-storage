@@ -68,7 +68,7 @@
         repo: '{{git_repo}}'
         dest: ./cloud-storage
         update: yes
-        version: developing_branch
+        version: main
   
 
     - name: compose the project
