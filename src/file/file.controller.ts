@@ -26,9 +26,9 @@ export class FileController{
     }
     @Post('many/ospc')
     @UseInterceptors(FileInterceptor('files',{preservePath:true,storage:getStorage('many/ospc')}))
-    uploadManyOSCP(@UploadedFiles() files:any){
+    uploadManyOSCP(@UploadedFiles() files:Array<Express.Multer.File>){
         this.logger.log('Files has been uploaded....')
-        return files?.map(file => file.filename)||files.filename
+        return files
     }
 
     @Post('document/ospc')
