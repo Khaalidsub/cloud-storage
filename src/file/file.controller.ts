@@ -1,5 +1,5 @@
 import { Controller, Logger, Post, UploadedFile, UploadedFiles, UseInterceptors } from "@nestjs/common";
-import { FileInterceptor } from "@nestjs/platform-express";
+import { FileInterceptor, FilesInterceptor } from "@nestjs/platform-express";
 import { getStorage } from "src/utils";
 @Controller('files')
 export class FileController{
@@ -25,10 +25,10 @@ export class FileController{
         return file.filename
     }
     @Post('many/ospc')
-    @UseInterceptors(FileInterceptor('files',{preservePath:true,storage:getStorage('many/ospc')}))
+    @UseInterceptors(FilesInterceptor('files',3,{preservePath:true,storage:getStorage('many/ospc')}))
     uploadManyOSCP(@UploadedFiles() files:Array<Express.Multer.File>){
         this.logger.log('Files has been uploaded....')
-        return files
+        return files.map(file=>file.filename)
     }
 
     @Post('document/ospc')
