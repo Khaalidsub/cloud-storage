@@ -11,9 +11,22 @@ export class FileController{
         this.logger.log('File has been uploaded....')
         return file.filename
     }
+    @Post('document/khidmaty')
+    @UseInterceptors(FileInterceptor('file',{preservePath:true,storage:getStorage('documents/khidmaty')}))
+    uploadKhidmatyDocument(@UploadedFile() file:Express.Multer.File){
+        this.logger.log('File has been uploaded....')
+        return file.filename
+    }
+
     @Post('image/ospc')
     @UseInterceptors(FileInterceptor('file',{preservePath:true,storage:getStorage('images/ospc')}))
     uploadImageOSPC(@UploadedFile() file:Express.Multer.File){
+        this.logger.log('File has been uploaded....')
+        return file.filename
+    }
+    @Post('document/ospc')
+    @UseInterceptors(FileInterceptor('file',{preservePath:true,storage:getStorage('documents/ospc')}))
+    uploadOSPCDocument(@UploadedFile() file:Express.Multer.File){
         this.logger.log('File has been uploaded....')
         return file.filename
     }
